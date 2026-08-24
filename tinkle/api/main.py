@@ -52,6 +52,7 @@ from tinkle.api.engineering_decision import router as engineering_decision_route
 from tinkle.api.validation import router as validation_router
 from tinkle.api.experiment_planning import router as experiment_planning_router
 from tinkle.api.experiment_results import router as experiment_results_router
+from tinkle.api.system_integration import router as system_integration_router
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from tinkle.core.config import settings
@@ -79,6 +80,7 @@ app.include_router(engineering_decision_router)
 app.include_router(validation_router)
 app.include_router(experiment_planning_router)
 app.include_router(experiment_results_router)
+app.include_router(system_integration_router)
 
 @app.get('/', include_in_schema=False)
 def ui_root():
