@@ -48,6 +48,7 @@ from tinkle.api.manufacturing import router as manufacturing_router
 from tinkle.api.design_optimization import router as design_optimization_router
 from tinkle.api.innovation_campaign import router as innovation_campaign_router
 from tinkle.api.invention_design import router as invention_design_router
+from tinkle.api.engineering_decision import router as engineering_decision_router
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from tinkle.core.config import settings
@@ -71,6 +72,7 @@ app.include_router(autonomous_discovery_router)
 app.include_router(design_optimization_router)
 app.include_router(innovation_campaign_router)
 app.include_router(invention_design_router)
+app.include_router(engineering_decision_router)
 
 @app.get('/', include_in_schema=False)
 def ui_root():
