@@ -73,6 +73,9 @@ class RelationshipType(str, Enum):
     TESTS = "TESTS"
     FAILS_UNDER = "FAILS_UNDER"
     COMPONENT_OF = "COMPONENT_OF"
+    PROPOSES = "PROPOSES"
+    TESTED_BY = "TESTED_BY"
+    COMPARED_WITH = "COMPARED_WITH"
 
 
 class GraphProvenance(BaseModel):
