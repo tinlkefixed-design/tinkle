@@ -1,0 +1,10 @@
+{
+  "version": "v2.44.0",
+  "phases": ["50.13", "50.14"],
+  "pytest": {"status": "PASS", "tests": 287},
+  "python_compile": "PASS",
+  "ruff": "NOT_VERIFIED",
+  "mypy": "NOT_VERIFIED",
+  "blueprint_audit": {"total": 76, "pass": 47, "partial": 29, "not_verified": 0, "release_ready": false},
+  "honesty_rule": "Unavailable static-analysis tools are never reported as passing. The 76-section audit is conservative and does not claim final compliance."
+}

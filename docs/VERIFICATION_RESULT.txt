@@ -1,0 +1,15 @@
+Tinkle Phase 26 Verification
+Status: PASS
+Full pytest: PASS
+Phase: 26 / 1-26
+Privacy API: PASS
+Local Mode: PASS
+Cloud-model restriction: PASS
+Storage restriction: PASS
+Export control: PASS
+Delete control: PASS
+Authentication: PASS
+Compileall: PASS
+ZIP integrity: PASS
+Ruff: DEFERRED (not installed)
+mypy: DEFERRED (not installed)

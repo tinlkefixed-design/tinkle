@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 15s
+scrape_configs:
+  - job_name: tinkle
+    metrics_path: /api/v1/observer/metrics
+    static_configs:
+      - targets: ["tinkle:8000"]

@@ -1,0 +1,85 @@
+/*
+  Smooth / flowing-edge design tokens for the Tinkle dashboard.
+  Apply these classes (or the variables) to the sidebar, panels, cards,
+  inputs and buttons that currently use hard 0px corners.
+*/
+
+:root {
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --panel-bg: rgba(6, 20, 21, 0.6);
+  --panel-border: rgba(92, 255, 240, 0.18);
+  --panel-glow: rgba(92, 255, 240, 0.08);
+  --cyan: #5cfff0;
+  --cyan-dim: #0fe3d6;
+}
+
+/* Sidebar / stat cards / notification cards → soft rounded panels instead of sharp boxes */
+.tinkle-shell .panel,
+.tinkle-shell .card,
+.tinkle-shell .sidebar,
+.tinkle-shell .notification {
+  border-radius: var(--radius-lg);
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 0 24px var(--panel-glow), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(6px);
+}
+
+/* Buttons, mode pills, nav items → pill/rounded, soft glow instead of hard-edged rectangles */
+.mode-btn,
+.tinkle-shell button {
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--panel-border);
+  background: rgba(92, 255, 240, 0.04);
+  color: var(--cyan-dim);
+  padding: 8px 18px;
+  transition: all 180ms ease;
+}
+.mode-btn:hover,
+.tinkle-shell button:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 0 14px rgba(92, 255, 240, 0.35);
+}
+.mode-btn.active {
+  background: rgba(92, 255, 240, 0.14);
+  color: var(--cyan);
+  box-shadow: 0 0 18px rgba(92, 255, 240, 0.45);
+}
+
+/* Inputs / chat bar → rounded capsule instead of sharp rectangle */
+.tinkle-shell input,
+.tinkle-shell textarea {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--panel-border);
+  background: rgba(6, 20, 21, 0.5);
+}
+
+/* Small badges/status chips */
+.chip {
+  border-radius: var(--radius-pill);
+}
+
+.tinkle-header {
+  font: 600 13px/1.4 'Segoe UI', system-ui, sans-serif;
+  letter-spacing: 0.14em;
+  color: var(--cyan-dim);
+  padding: 16px 20px;
+}
+
+.tinkle-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: radial-gradient(circle at 50% 40%, #081414, #050b0c 70%);
+}
+
+.tinkle-modes {
+  display: flex;
+  gap: 10px;
+  padding: 14px 20px;
+  flex-wrap: wrap;
+}

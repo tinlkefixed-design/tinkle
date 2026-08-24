@@ -1,0 +1,4 @@
+# Canonical dependency list lives in pyproject.toml ([project.dependencies] and
+# [project.optional-dependencies.dev]). This file exists only for tools/CI that
+# expect a requirements.txt; it installs the package (with dev extras) in editable mode.
+-e .[dev]

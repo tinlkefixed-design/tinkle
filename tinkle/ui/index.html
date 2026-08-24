@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TINKLE — Complete Holographic UI</title>
+<link rel="stylesheet" href="/ui/styles.css">
+</head>
+<body>
+<div class="space-noise"></div><div class="scan-grid"></div><div class="vignette"></div>
+<div class="app-shell">
+<header class="topbar glass3d">
+  <div class="brand"><span class="brand-mark">T</span><div><strong>TINKLE</strong><small>HOLOGRAPHIC COGNITIVE SYSTEM</small></div></div>
+  <div class="status"><span class="status-dot"></span><span id="statusText">READY</span><span class="phase">PHASE 27</span></div>
+  <div class="top-actions"><button id="listenBtn" class="icon-btn" title="Listen">◉</button><button id="speakBtn" class="icon-btn" title="Speak">◌</button><button id="focusBtn" class="icon-btn" title="3D Explain">⌖</button></div>
+</header>
+<main class="workspace">
+  <aside class="left-rail">
+    <nav class="glass3d nav-panel" aria-label="Tinkle modules">
+      <div class="rail-title">SYSTEM MAP</div>
+      <button class="nav-item active" data-view="chat"><span>◈</span>Chat</button>
+      <button class="nav-item" data-view="projects"><span>◇</span>Projects</button>
+      <button class="nav-item" data-view="knowledge"><span>◌</span>Knowledge</button>
+      <button class="nav-item" data-view="research"><span>⌁</span>Research</button>
+      <button class="nav-item" data-view="experiments"><span>✦</span>Experiments</button>
+      <button class="nav-item" data-view="simulation"><span>◎</span>Simulation</button>
+      <button class="nav-item" data-view="agents"><span>△</span>Agents</button>
+      <button class="nav-item" data-view="memory"><span>▦</span>Memory</button>
+      <button class="nav-item" data-view="skills"><span>✧</span>Skills</button>
+      <button class="nav-item" data-view="discoveries"><span>✺</span>Discoveries</button>
+      <button class="nav-item" data-view="hypotheses"><span>H</span>Hypotheses</button>
+      <button class="nav-item" data-view="evidence"><span>Σ</span>Evidence</button>
+      <button class="nav-item" data-view="tasks"><span>▣</span>Tasks</button>
+      <button class="nav-item" data-view="health"><span>⌁</span>System Health</button>
+      <button class="nav-item" data-view="settings"><span>⚙</span>Settings</button>
+      <div class="rail-footer"><span class="live-dot"></span> TINKLE CORE ONLINE</div>
+    </nav>
+    <section class="glass3d notification-panel">
+      <div class="panel-head"><div><span class="eyebrow">LIVE EVENT LAYER</span><h2>Notifications</h2></div><span id="notifCount" class="badge">0</span></div>
+      <div id="notificationsList" class="feed"></div>
+    </section>
+  </aside>
+
+  <section id="stage" class="stage">
+    <div class="stage-horizon"></div><div class="stage-crosshair"></div>
+    <div class="hud-label label-a">SYSTEM / TINKLE</div><div class="hud-label label-b">MODE <b id="modeText">READY</b></div>
+    <div class="hud-label label-c">USER: DOCTOR</div><div class="hud-label label-d">VOICE <b>uju3wxzG5OhpWcoi3SMy</b></div>
+    <div id="viewTitle" class="view-title">CHAT / TINKLE CORE</div>
+
+    <div id="tinkleActor" class="tinkle-actor" aria-label="Tinkle 3D core">
+      <canvas id="coreCanvas"></canvas><div class="core-aura"></div>
+      <div class="core-caption"><span>TINKLE</span><small id="coreState">STANDBY</small></div>
+      <div class="core-orbit orbit-a"></div><div class="core-orbit orbit-b"></div>
+    </div>
+
+    <section id="viewPanel" class="view-panel glass3d hidden"></section>
+
+    <section id="explainPanel" class="explain-panel glass3d hidden">
+      <div class="panel-head"><div><span class="eyebrow">LIVE 3D EXPLANATION ENGINE</span><h2 id="explainTitle">Tinkle is ready</h2></div><button id="closeExplain" class="ghost">×</button></div>
+      <div class="explain-visual"><canvas id="explainCanvas"></canvas><div id="sceneLabels" class="scene-labels"></div>
+        <div class="scene-controls"><button data-scene="auto">AUTO</button><button data-scene="atom">ATOM</button><button data-scene="solar">SYSTEM</button><button data-scene="circuit">CIRCUIT</button><button data-scene="engine">ENGINE</button><button data-scene="concept">CONCEPT</button></div>
+        <div class="scene-controls advanced-controls"><button data-tool="library">LIBRARY</button><button data-tool="cad">CAD</button><button data-tool="physics">PHYSICS</button><button data-tool="generate">GENERATE</button></div>
+        <div class="scene-labbar"><select id="modelSelect" aria-label="3D model library"></select><select id="cadSelect" aria-label="CAD primitive"><option value="box">BOX</option><option value="cylinder">CYLINDER</option><option value="sphere">SPHERE</option><option value="gear">GEAR</option><option value="shaft">SHAFT</option><option value="beam">BEAM</option><option value="pipe">PIPE</option></select><select id="physicsSelect" aria-label="3D physics"><option value="gravity">GRAVITY</option><option value="projectile">PROJECTILE</option><option value="spring">SPRING</option><option value="orbit">ORBIT</option><option value="heat">HEAT FIELD</option><option value="fluid">FLOW FIELD</option></select><input id="scenePrompt" placeholder="Describe any 3D scene…"><button id="run3d">BUILD</button></div>
+        <div class="scene-readout" id="sceneReadout">3D MODEL / LIVE</div>
+      </div>
+      <div class="explain-bottom"><div class="stepper"><button id="prevStep">‹</button><span id="stepLabel">STEP 01</span><button id="nextStep">›</button></div><div class="explain-copy" id="explainCopy"></div></div>
+    </section>
+
+    <div class="floating-hud hud-left glass3d"><span>COGNITIVE</span><b id="cognitiveState">READY</b><i></i><span>TOOLS</span><b id="toolsState">READY</b></div>
+    <div class="floating-hud hud-right glass3d"><span>MEMORY</span><b id="memoryState">ACTIVE</b><i></i><span>LATENCY</span><b id="latencyState">—</b></div>
+    <div id="commandDock" class="command-dock glass3d"><button id="commandMic" class="mic">●</button><input id="commandInput" placeholder="Talk to Tinkle…" autocomplete="off"><button id="sendCommand" class="send">SEND</button></div>
+  </section>
+
+  <aside class="rightbar">
+    <section class="glass3d panel3d intelligence"><div class="panel-head"><div><span class="eyebrow">COGNITIVE STATE</span><h2>Intelligence</h2></div></div><div class="metrics"><div><span>ACCURACY</span><b id="accuracy">—</b></div><div><span>MEMORY</span><b id="memory">ACTIVE</b></div><div><span>TOOLS</span><b id="tools">READY</b></div><div><span>LATENCY</span><b id="latency">—</b></div></div></section>
+    <section class="glass3d panel3d stream"><div class="panel-head"><div><span class="eyebrow">DISCOVERY STREAM</span><h2>Hypotheses</h2></div></div><div id="hypotheses" class="hypotheses"></div></section>
+    <section class="glass3d panel3d stream"><div class="panel-head"><div><span class="eyebrow">SYSTEM PROGRESS</span><h2>Milestones</h2></div></div><div id="achievements" class="achievements"></div></section>
+  </aside>
+</main></div>
+<script src="/ui/app.js"></script>
+</body></html>
