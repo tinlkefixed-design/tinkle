@@ -21,6 +21,7 @@ from tinkle.api.autonomous_discovery import router as autonomous_discovery_route
 from tinkle.api.hypothesis_universe import router as hypothesis_universe_router
 from tinkle.api.research_engine import router as research_router
 from tinkle.api.reality_engine import router as reality_router
+from tinkle.api.research_graph import router as research_graph_router
 from tinkle.api.discovery_engine import router as discovery_router
 from tinkle.api.invention_engine import router as invention_router
 from tinkle.api.cross_domain import router as cross_domain_router
@@ -241,6 +242,7 @@ app.include_router(evolution_router)
 app.include_router(hypothesis_universe_router)
 app.include_router(research_router)
 app.include_router(reality_router)
+app.include_router(research_graph_router)
 app.include_router(discovery_router)
 app.include_router(invention_router)
 app.include_router(cross_domain_router)
