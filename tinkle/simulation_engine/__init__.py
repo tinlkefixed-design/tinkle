@@ -1,25 +1,45 @@
 from .engine import SimulationEngine
-from .schemas import SimulationRequest, SimulationResult, SimulationStage
 from .physics_engine import PhysicsLabEngine
 from .physics_schemas import (
-	MechanicsSimulationRequest,
-	MechanicsSimulationResult,
-	PhysicsCalculation,
-	PhysicsQuantity,
-	ScientificModel,
+    MechanicsSimulationRequest,
+    MechanicsSimulationResult,
+    PhysicsCalculation,
+    PhysicsQuantity,
+    ScientificModel,
+)
+from .schemas import SimulationRequest, SimulationResult, SimulationStage
+from .uncertainty_engine import UncertaintyEngine
+from .uncertainty_schemas import (
+	AnalysisRequest,
+	OptimizationRequest,
+	OptimizationResult,
+	ParameterRange,
+	RobustnessResult,
+	SensitivityResult,
+	SweepResult,
+	UncertaintyAnalysisResult,
+	UncertaintySpec,
 )
 
 __all__ = [
+	"AnalysisRequest",
+	"MechanicsSimulationRequest",
+	"MechanicsSimulationResult",
+	"OptimizationRequest",
+	"OptimizationResult",
+	"ParameterRange",
+	"PhysicsCalculation",
+	"PhysicsLabEngine",
+	"PhysicsQuantity",
+	"RobustnessResult",
+	"ScientificModel",
+	"SensitivityResult",
 	"SimulationEngine",
 	"SimulationRequest",
 	"SimulationResult",
 	"SimulationStage",
-	"PhysicsLabEngine",
-	"MechanicsSimulationRequest",
-	"MechanicsSimulationResult",
-	"PhysicsCalculation",
-	"PhysicsQuantity",
-	"ScientificModel",
+	"SweepResult",
+	"UncertaintyAnalysisResult",
+	"UncertaintyEngine",
+	"UncertaintySpec",
 ]
-
-__all__ = ['SimulationEngine', 'SimulationRequest', 'SimulationResult', 'SimulationStage']

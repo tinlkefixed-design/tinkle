@@ -4,17 +4,21 @@ from tinkle.api.deps import principal_from_key, require
 from tinkle.core.auth import Principal
 from tinkle.core.schemas import Permission
 from tinkle.simulation_engine import (
+    AnalysisRequest,
     MechanicsSimulationRequest,
     MechanicsSimulationResult,
+    OptimizationRequest,
     PhysicsLabEngine,
     SimulationEngine,
     SimulationRequest,
     SimulationResult,
+    UncertaintyEngine,
 )
 
 router = APIRouter(prefix='/api/v1/simulation', tags=['simulation-engine'])
 engine = SimulationEngine()
 physics_engine = PhysicsLabEngine()
+uncertainty_engine = UncertaintyEngine(physics_engine)
 
 @router.post('/run', response_model=SimulationResult)
 def run(req: SimulationRequest, p: Principal = Depends(principal_from_key)):
@@ -69,4 +73,49 @@ def spring_force(req: MechanicsSimulationRequest, p: Principal = Depends(princip
     try:
         return PhysicsLabEngine.spring_force(req.spring_constant, req.spring_displacement)
     except ValueError as exc:
+        raise HTTPException(422, str(exc)) from exc
+
+
+@router.post('/analysis/sweep')
+def sweep(req: AnalysisRequest, p: Principal = Depends(principal_from_key)):
+    require(p, Permission.execute)
+    try:
+        return uncertainty_engine.sweep(req)
+    except (KeyError, ValueError) as exc:
+        raise HTTPException(422, str(exc)) from exc
+
+
+@router.post('/analysis/sensitivity')
+def sensitivity(req: AnalysisRequest, p: Principal = Depends(principal_from_key)):
+    require(p, Permission.execute)
+    try:
+        return uncertainty_engine.sensitivity(req)
+    except (KeyError, ValueError) as exc:
+        raise HTTPException(422, str(exc)) from exc
+
+
+@router.post('/analysis/uncertainty')
+def uncertainty(req: AnalysisRequest, p: Principal = Depends(principal_from_key)):
+    require(p, Permission.execute)
+    try:
+        return uncertainty_engine.uncertainty(req)
+    except (KeyError, ValueError) as exc:
+        raise HTTPException(422, str(exc)) from exc
+
+
+@router.post('/analysis/robustness')
+def robustness(req: AnalysisRequest, p: Principal = Depends(principal_from_key)):
+    require(p, Permission.execute)
+    try:
+        return uncertainty_engine.robustness(req)
+    except (KeyError, ValueError) as exc:
+        raise HTTPException(422, str(exc)) from exc
+
+
+@router.post('/analysis/optimize')
+def optimize(req: OptimizationRequest, p: Principal = Depends(principal_from_key)):
+    require(p, Permission.execute)
+    try:
+        return uncertainty_engine.optimize(req)
+    except (KeyError, ValueError) as exc:
         raise HTTPException(422, str(exc)) from exc
